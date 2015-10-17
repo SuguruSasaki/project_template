@@ -1,0 +1,124 @@
+@import "variables";
+
+//////////////////////////////////////////////////////
+//HTML初期設定
+//////////////////////////////////////////////////////
+
+// HTML全体の設定
+html, body {
+    font-family: $font-regular;
+    margin: 0;
+    padding: 0;
+}
+
+
+//////////////////////////////////////////////////////
+//テキスト関連初期設定
+//////////////////////////////////////////////////////
+
+//テキスト関連要素の初期設定
+h1,h2,h3,h4,h5,h6,p,a,ul,ol,li,dl,dd,dt {
+    font-family: $font-regular;
+    font-weight: 400;
+    color: $device-black;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+//親要素が暗い場合のテキストカラー設定
+h1,h2,h3,h4,h5,h6,p,ul,ol,dl,li,dl,dd,dt {
+    .darken & {
+        color: #fff;
+    }
+}
+
+h1 {
+    font-size: 4.0rem;
+    font-weight: $light;
+}
+
+h2 {
+    font-size: 3.2rem;
+    font-weight: $light;
+}
+
+h3 {
+    font-size: 2.4rem;
+    font-weight: $medium;
+}
+
+h4 {
+    font-size: 2.0rem;
+    font-weight: $medium;
+}
+
+h5 {
+    font-size: 1.6rem;
+    font-weight: $bold;
+}
+
+h6 {
+    font-size: 1.4rem;
+    font-weight: $bold;
+}
+
+
+//見出し、本文下のマージン
+h1, h2, h3, h4, h5, h6, p, small {
+    margin: 0 0 1em 0;
+}
+
+/////////////////////////////////////////////
+// display設定
+////////////////////////////////////////////
+.block {  display: block;  }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+
+
+////////////////////////////////////////////
+// Text align
+////////////////////////////////////////////
+.lg-center {
+    text-align: center;
+}
+
+.lg-left {
+    text-align: left;
+}
+
+.lg-right {
+    text-align: right;
+}
+
+@media screen and (max-width: $device_sp) {
+    .xs-left {
+        text-align: left;
+    }
+
+    .xs-center {
+        text-align: center;
+    }
+
+    .xs-right {
+        text-align: right;
+    }
+}
+
+/////////////////////////////////////////////
+// float
+/////////////////////////////////////////////
+@media screen and (max-width: $device_sp){
+     .xs-float-right {
+         float: right;
+     }
+
+    .xs-float-left {
+        float: left;
+    }
+
+    .xs-float-none {
+        float: none;
+    }
+}
