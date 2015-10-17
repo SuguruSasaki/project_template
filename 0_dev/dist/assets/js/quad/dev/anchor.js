@@ -6,7 +6,7 @@ $(function(exports) {
      アンカーナビゲーション機能を実装します。
      */
      if($('.js-anchor-nav').length){
-        $('.js-anchor-nav').each(setupNavigation);
+        $('.js-anchor-nav').each(setupAnchorNavigation);
      }
 
      /**
