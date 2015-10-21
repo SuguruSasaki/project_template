@@ -30,14 +30,14 @@ $(function(exports) {
     /**
      * 画像読み込みを監視する。
      *
-     * @param target
-     * @param completeFunc
-     * @param scope
-     * @param origin
+     * @param target          親要素
+     * @param completeFunc    コールバック関数
+     * @param scope           コールバックを呼び出すスコープ
+     * @param args            コールバックに渡す引数
      */
-    module.ImageManager.watch = function(target, completeFunc, scope, origin){
+    module.ImageManager.watch = function(target, completeFunc, scope, args){
         if(module.ImageManager.listeners[target[0].src]) return;
-        var struct = new ImageStruct(target, completeFunc, scope, origin);
+        var struct = new ImageStruct(target, completeFunc, scope, args);
         module.ImageManager.listeners[target[0].src] = struct;
         struct.loadImage();
     };
