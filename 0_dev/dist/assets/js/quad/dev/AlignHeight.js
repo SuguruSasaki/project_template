@@ -11,54 +11,52 @@ $(function(exports) {
      カラムの高さ整頓クラス。
     */
 
+    // DOM探索の大元
+    var origin = $('.js-align-height');
+    var _this = this;
 
-    // 初回ロード判定フラグ
-    var isInitialLoad = false;
-
-    // 全て読み込み終わってから高さを調整する。
-    $(window).load(function(){
-      isInitialLoad = true;
-      calcColumHeight();
+    // イメージ要素をもつか調べる
+    origin.each(function(key, value){
+        var tmp = $(value).find('img');
+        if(tmp[0]){
+            // 画像を内包している場合は、読み込み完了後実行する
+            module.ImageManager.watch(tmp, _this, calcElement, value);
+        }
+        else {
+            // 高さ揃え実行
+            calcElement(value);
+        }
     });
 
     // リサイズ処理
-    $(window).resize(calcColumHeight);
+    $(window).resize(function(){
+        origin.each(function(key, value){
+            calcElement(value);
+        });
+    });
 
     /**
-     * 高さ調整
+     * 高さを制御する
+     * @param value
      */
-    function calcColumHeight(){
-        if(!isInitialLoad) return;
+    function calcElement(value){
+        var maxHeight = 0;
+        var target = $(value);
 
-        // 高さを揃える
-        $('.js-align-height').each(function(key, value){
+        target.children().each(function(key, element){
+            $('.js-align-item', element).css({height: "auto"});
+        });
 
-            var maxHeight = 0;
-            var target = $(value);
+        target.children().each(function(key, element){
+            var h = $('.js-align-item', $(element)).height();
+            if(maxHeight < h ){
+                maxHeight = h;
+            }
+        });
 
-            // リセット
-            target.children().each(function(key, element){
-                $('.js-align-item', element).css({height: "auto"});
-            });
-
-            // 高さ検索
-            target.children().each(function(key, element){
-                var h = $('.js-align-item', $(element)).height();
-                if(maxHeight < h ){
-                    maxHeight = h;
-                }
-            });
-
-            // 高さ反映
-            target.children().each(function(key, element){
-                $('.js-align-item', element).css({height: maxHeight});
-            });
+        target.children().each(function(key, element){
+            $('.js-align-item', element).css({height: maxHeight});
         });
     }
-
-
-
-
-
 
 });
