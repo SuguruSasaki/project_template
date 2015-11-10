@@ -43,19 +43,25 @@ $(function(exports) {
         var maxHeight = 0;
         var target = $(value);
 
-        target.children().each(function(key, element){
-            $('.js-align-item', element).css({height: "auto"});
+        target.each(function(key, element){
+            $('.js-align-item', element).each(function(key, value){
+                $(value).css({height: "auto"});
+            });
         });
 
-        target.children().each(function(key, element){
-            var h = $('.js-align-item', $(element)).height();
-            if(maxHeight < h ){
-                maxHeight = h;
-            }
+        target.each(function(key, element){
+            $('.js-align-item', element).each(function(key, value){
+                var h = $(value).height();
+                if(maxHeight < h ){
+                    maxHeight = h;
+                }
+            });
         });
 
-        target.children().each(function(key, element){
-            $('.js-align-item', element).css({height: maxHeight});
+        target.each(function(key, element){
+            $('.js-align-item', element).each(function(key, value){
+                $(value).css({height: maxHeight});
+            });
         });
     }
 
