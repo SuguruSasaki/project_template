@@ -8,7 +8,7 @@ $(function(exports) {
      @date  2015.10.20
      @version 1.0.0
 
-     カラムの高さ整頓クラス。
+     HTML上のimgタグの画像読み込みを監視するクラス
     */
 
     /**
