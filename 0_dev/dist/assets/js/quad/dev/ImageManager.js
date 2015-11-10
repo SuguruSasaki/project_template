@@ -36,9 +36,9 @@ $(function(exports) {
      * @param args            コールバックに渡す引数
      */
     module.ImageManager.watch = function(target, completeFunc, scope, args){
-        if(module.ImageManager.listeners[target[0].src]) return;
-        var struct = new ImageStruct(target, completeFunc, scope, args);
-        module.ImageManager.listeners[target[0].src] = struct;
+        if(module.ImageManager.listeners[target[0].src + new Date().getMilliseconds()]) return;
+        var struct = new ImageStruct(target, completeFunc, scope, origin);
+        module.ImageManager.listeners[target[0].src + new Date().getMilliseconds()] = struct;
         struct.loadImage();
     };
 
