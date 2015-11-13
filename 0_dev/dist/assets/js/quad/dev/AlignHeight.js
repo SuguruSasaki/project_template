@@ -6,7 +6,7 @@ $(function(exports) {
      AlignHeight.js
      @author suguru.sasaki@quad.co.jp
      @date  2015.10.16
-     @version 1.0.0
+     @version 1.0.1
 
      カラムの高さ整頓クラス。
     */
