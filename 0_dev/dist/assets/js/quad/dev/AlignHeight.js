@@ -60,7 +60,12 @@ $(function(exports) {
 
         target.each(function(key, element){
             $('.js-align-item', element).each(function(key, value){
-                $(value).css({height: maxHeight});
+                if($(this).hasClass('js-align-xs-ignore')){
+                    $(value).css({height: "auto"});
+                }
+                else {
+                    $(value).css({height: maxHeight});
+                }
             });
         });
     }

@@ -1,6 +1,6 @@
 $(function(exports) {
-    exports.psc = exports.psc || {};
-    var module = exports.psc;
+    exports.quad = exports.quad || {};
+    var module = exports.quad;
 
 
     /**
