@@ -39,19 +39,23 @@ $(function(exports) {
         $('.js-style').each(function(key, value){
             var style_lg = $(value).data('lg-style');
             var style_md = $(value).data('md-style');
+            var style_sm = $(value).data('sm-style');
             var style_xs = $(value).data('xs-style');
 
             var windowWidth = $(window).width(); // ウィンドウサイズ
             var style = "";
 
-            if( windowWidth > $device_tb ){
-                style = style_lg;
-            }
-            else if( windowWidth < $device_tb && windowWidth > $device_sp ){
-                style = style_md;
-            }
-            else if( windowWidth < $device_sp ){
+            if(style_xs){
                 style = style_xs;
+            }
+            else if( windowWidth > $device_sp && windowWidth < $device_tb){
+                if(style_sm) style = style_sm;
+            }
+            else if(windowWidth > $device_tb && windowWidth < $device_pc){
+                if(style_md) style = style_md;
+            }
+            else if(windowWidth > $device_pc) {
+                if(style_lg) style = style_lg;
             }
 
             if($(value).attr("style")){
