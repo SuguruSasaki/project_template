@@ -21,6 +21,7 @@ $(function(exports) {
      */
     configureStyle();
 
+
     /**
      * リサイズ設定
      */
@@ -43,27 +44,42 @@ $(function(exports) {
             var style_sm = $target.data('sm-style');
             var style_xs = $target.data('xs-style');
 
+            if(!$target.data("style-origin")) {
+                if($target.attr("style")){
+                    $target.attr("data-style-origin", $target.attr("style"));
+                }
+                else {
+                    $target.attr("data-style-origin", " ");
+                }
+            }
+
             var windowWidth = $(window).width(); // ウィンドウサイズ
             var style = "";
 
             if(style_xs){
                 style = style_xs;
             }
-            else if( windowWidth > $device_sp && windowWidth < $device_tb){
+
+            if( windowWidth > $device_sp){
                 if(style_sm) style = style_sm;
             }
-            else if(windowWidth > $device_tb && windowWidth < $device_pc){
+
+            if(windowWidth > $device_tb){
                 if(style_md) style = style_md;
             }
-            else if(windowWidth > $device_pc) {
+
+            if(windowWidth > $device_pc) {
                 if(style_lg) style = style_lg;
             }
 
-            if($target.attr("style")){
-                style = $target.attr("style") + " "+ style;
+            if($target.data("style-origin")){
+                // console.log($target.data("style-origin"));
+                style = $target.data("style-origin") + " "+ style;
             }
             // スタイルを設定する
             $target.attr("style", style);
+
+
         });
 
 
