@@ -37,7 +37,7 @@ $(function(exports) {
         var $device_sp = 768;   // スマホサイズ
 
         $('.js-style').each(function(key, value){
-            var $target  = $target;
+            var $target  = $(value);
             var style_lg = $target.data('lg-style');
             var style_md = $target.data('md-style');
             var style_sm = $target.data('sm-style');
