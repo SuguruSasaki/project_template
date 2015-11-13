@@ -37,10 +37,11 @@ $(function(exports) {
         var $device_sp = 768;   // スマホサイズ
 
         $('.js-style').each(function(key, value){
-            var style_lg = $(value).data('lg-style');
-            var style_md = $(value).data('md-style');
-            var style_sm = $(value).data('sm-style');
-            var style_xs = $(value).data('xs-style');
+            var $target  = $target;
+            var style_lg = $target.data('lg-style');
+            var style_md = $target.data('md-style');
+            var style_sm = $target.data('sm-style');
+            var style_xs = $target.data('xs-style');
 
             var windowWidth = $(window).width(); // ウィンドウサイズ
             var style = "";
@@ -58,11 +59,11 @@ $(function(exports) {
                 if(style_lg) style = style_lg;
             }
 
-            if($(value).attr("style")){
-                style = $(value).attr("style") + " "+ style;
+            if($target.attr("style")){
+                style = $target.attr("style") + " "+ style;
             }
             // スタイルを設定する
-            $(value).attr("style", style);
+            $target.attr("style", style);
         });
 
 
