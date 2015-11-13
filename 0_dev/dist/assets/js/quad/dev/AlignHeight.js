@@ -15,6 +15,12 @@ $(function(exports) {
     var origin = $('.js-align-height');
     var _this = this;
 
+    // デバイスサイズ設定
+    var device_xs = 768;
+    var device_sm = 992;
+    var device_md = 1200;
+
+
     // イメージ要素をもつか調べる
     origin.each(function(key, value){
         var tmp = $(value).find('img');
@@ -61,7 +67,12 @@ $(function(exports) {
         target.each(function(key, element){
             $('.js-align-item', element).each(function(key, value){
                 if($(this).hasClass('js-align-xs-ignore')){
-                    $(value).css({height: "auto"});
+                    if($(window).width() < device_xs ){
+                        $(value).css({height: "auto"});
+                    }
+                    else {
+                        $(value).css({height: maxHeight});
+                    }
                 }
                 else {
                     $(value).css({height: maxHeight});
