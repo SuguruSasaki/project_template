@@ -11,7 +11,8 @@
  */
 
 
-// IE対応
+// IE対応 console.logをIEではエラーにならないようにする設定
+// 関数オブジェクを生成する。
 (function () {
     if (typeof window.console === "undefined") {
         window.console = {}
@@ -22,7 +23,7 @@
 })();
 
 
-
+// trace, warn error info debugを実装
 var methods = ['trace', 'warn', 'error', 'info', 'debug'];
 for(var i in methods){
     (function(m){
