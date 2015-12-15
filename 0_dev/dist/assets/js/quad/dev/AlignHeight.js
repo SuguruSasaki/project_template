@@ -68,6 +68,8 @@ $(function(exports) {
             $('.js-align-item', element).each(function(key, value){
                 if($(this).hasClass('js-align-xs-ignore')){
                     if($(window).width() < device_xs ){
+                        //console.log($(window).width());
+
                         $(value).css({height: "auto"});
                     }
                     else {
