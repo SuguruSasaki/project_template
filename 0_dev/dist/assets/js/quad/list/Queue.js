@@ -9,12 +9,19 @@ var Queue = function(){
     this._rearStackPoint  = 0;  // 末尾
 };
 
+/**
+ * @Private
+ * スタックポイントを次にずらす
+ *
+ * @param stackPoint
+ * @returns {*}
+ */
 Queue.prototype["_next"] = function(stackPoint){
     return stackPoint + 1;
 };
 
 /**
- *
+ * キューに追加
  * @param data
  */
 Queue.prototype["enqueue"] = function(data){
@@ -23,6 +30,10 @@ Queue.prototype["enqueue"] = function(data){
     this._rearStackPoint = this._next(this._rearStackPoint);
 };
 
+/**
+ * キューから取り出す
+ * @returns {*}
+ */
 Queue.prototype["dequeue"] = function(){
     if(this._frontStackPoint == this._rearStackPoint) throw new Error("待ち行列が空なので要素をとりだせません。");
     var data = this._list[this._frontStackPoint];
