@@ -23,6 +23,8 @@
     // Header
     //--------------------------------------------
     module.LinkedList.prototype["insert"] = LinkedList__insert;
+    module.LinkedList.prototype["delete"] = LinkedList__delete;
+    module.LinkedList.prototype["next"]   = LinkedList__next;
 
 
     /**
@@ -31,7 +33,29 @@
      * @constructor
      */
     function LinkedList__insert(data){
+        if(this._next) data.insert(this._next);
         this._next = data;
+    }
+
+    /**
+     *
+     * @constructor
+     */
+    function LinkedList__delete(){
+        if(this._next) {
+            var p = this._next.next();
+            if(p) this._next = p;
+        }
+    }
+
+    /**
+     * 次のLinkedListオブジェクトを取得
+     *
+     * @returns {null|*|Queue_next}
+     * @constructor
+     */
+    function LinkedList__next() {
+        return this._next;
     }
 
 
